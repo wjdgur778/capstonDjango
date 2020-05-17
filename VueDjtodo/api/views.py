@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 from django.forms.models import model_to_dict
+
+
 # Create your views here.
 class ApiTodoLV(BaseListView):
     model = Todo

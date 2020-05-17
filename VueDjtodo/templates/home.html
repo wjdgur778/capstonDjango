@@ -2,11 +2,11 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% load custom_tag %}
 {% block title %}home.html{% endblock %}
 
 {% block extra-style %}
-
+<!-- 
 <video autoplay muted loop id="myVideo">
     <source src="/static/videos/CCTV footage Car bangs into a scooty and runs away; kills Vinay on the spot!.mp4" type="video/mp4" class = "center">
     Your browser does not support HTML5 video.
@@ -37,7 +37,41 @@ body {
   height: 300pt;
   border-top: 10px solid #ccc;
   border-bottom: 10px solid #ccc;
-}
+} -->
+
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+	<script >
+		var _count = 1;
+		function init(){
+			setInterval(timed, 550); 
+		}
+
+		function timed(){
+			//$('#img1').empty();
+		//	var imgid = "img1";
+		console.log(_count);
+		if(_count >=10){
+			$('#img1').attr( "src", "/static/img/Kerala live accident CCTV 2019 "+_count+".jpg");
+		}else{
+			$('#img1').attr( "src", "/static/img/Kerala live accident CCTV 2019 0"+_count+".jpg");
+		}
+			_count++;
+		}
+		
+		
+        </script>
+        
+        </head>
+
+		<body onLoad="init();">
+            
+			<img id="img1" src="" width="600px" height="400px" class="relative" >
+        </body>
+		</html>
+</body>
 
 
 
@@ -46,6 +80,7 @@ body {
 <style type="text/css">
 
 /* .home-window {
+   
     background-image: url("{% static 'img/lion.jpg' %}");
     background-repeat: no-repeat;
     background-position: center;
@@ -55,7 +90,7 @@ body {
     border-bottom: 10px solid #ccc;
     color: yellow;
     padding: 20px 0 0 20px;
-} */
+}  */
 .title {
     color: #c80;
     font-weight: bold;
@@ -96,6 +131,8 @@ footer ul li {
     <div class="row text-center">
         <div class="col-sm-6">
             <h3>Todo App</h3>
+            <li>{{add_image}}</li>
+
             <p>With Todo app, you can manage, prioritize, and complete the most important things
                 you need to do every day. I can focus on the most important things
                 and I can do my day more deliberately.
