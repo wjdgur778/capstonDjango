@@ -1,151 +1,212 @@
-
 {% extends 'base.html' %}
-
 {% load static %}
-{% load custom_tag %}
 {% block title %}home.html{% endblock %}
 
 {% block extra-style %}
-<!-- 
-<video autoplay muted loop id="myVideo">
-    <source src="/static/videos/CCTV footage Car bangs into a scooty and runs away; kills Vinay on the spot!.mp4" type="video/mp4" class = "center">
-    Your browser does not support HTML5 video.
-  </video>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing:  border-box;;
-}
-
-body {
-  margin: 100;
-  font-family: Arial;
-  font-size: 17px;
-}
-
-#myVideo {
-/*position: fixed;
-  right: 10px;
-  bottom: 10px;
-  min-width: 50%; 
-  min-height: 25%;*/
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 400pt; 
-  height: 300pt;
-  border-top: 10px solid #ccc;
-  border-bottom: 10px solid #ccc;
-} -->
 
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
+
 </head>
-<body>
-	<script >
-		var _count = 1;
-		function init(){
-			setInterval(timed, 550); 
-		}
-
-		function timed(){
-			//$('#img1').empty();
-		//	var imgid = "img1";
-		console.log(_count);
-		if(_count >=10){
-			$('#img1').attr( "src", "/static/img/Kerala live accident CCTV 2019 "+_count+".jpg");
-		}else{
-			$('#img1').attr( "src", "/static/img/Kerala live accident CCTV 2019 0"+_count+".jpg");
-		}
-			_count++;
-		}
-		
-		
-        </script>
-        
-        </head>
-
-		<body onLoad="init();">
-            
-			<img id="img1" src="" width="600px" height="400px" class="relative" >
-        </body>
-		</html>
-</body>
-
 
 
 </style>
 
 <style type="text/css">
+    .home-window {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        height: 500px;
+        border-top: 10px solid #ccc;
+        border-bottom: 10px solid #ccc;
+        color: yellow;
+        padding: 20px 0 0 20px;
+    }
 
-/* .home-window {
-   
-    background-image: url("{% static 'img/lion.jpg' %}");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    height: 500px;
-    border-top: 10px solid #ccc;
-    border-bottom: 10px solid #ccc;
-    color: yellow;
-    padding: 20px 0 0 20px;
-}  */
-.title {
-    color: #c80;
-    font-weight: bold;
-}
-.powered {
-    position: relative;
-    top: 77%;
-    color: #cc0;
-    font-style: italic;
-}
+    .title {
+        color: #c80;
+        font-weight: bold;
+    }
 
-.footer-wrapper {
-    background: #456;
-    color: #eee;
-    line-height: 50px;
-}
-.footer-wrapper a {
-    color: #ff9;    /* footer-right text */
-}
-.footer-wrapper a:hover {
-    color: #0ff;
-}
-footer ul li {
-    text-align: center;
-}
+    .powered {
+        position: relative;
+        top: 77%;
+        color: #cc0;
+        font-style: italic;
+    }
 
+    .footer-wrapper {
+        background: rgb(255, 124, 37);
+        color: #eee;
+        line-height: 15px;
+    }
+
+    .footer-wrapper a {
+        color: #ff9;
+        /* footer-right text */
+    }
+
+    .footer-wrapper a:hover {
+        color: #0ff;
+    }
+
+    footer ul li {
+        text-align: center;
+    }
+
+    .container2 {
+        padding: 7px;
+        margin-top: 90px;
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+    }
 </style>
+
+
+<body>
+    
+
+    <script>
+        var _count = 1;
+        var s_count = 1;
+        var flag = 1;
+        var id;
+        function wait(msecs) {
+            var start = new Date().getTime();
+            var cur = start;
+            while (cur - start < msecs) {
+                cur = new Date().getTime();
+            }
+        }
+        function sweet(_count) {
+            Swal.fire({
+                title: "Warning!",
+                width: 400,
+                backdrop: 'rgba(255, 115, 0,0.2)',
+                padding: '3em',
+                text: "You clicked the button!",
+                icon: "warning",
+                html:
+                    '사고에 대한 정보를 다운로드하세요! ' +
+                    '<a href ="/static/img/Kerala live accident CCTV 2019 02.jpg" download>영상</a>' +
+                    '과'+
+                    '<a href ="/static/img/Kerala live accident CCTV 2019 02.jpg" download>데이터</a>' +
+                    '가 있습니다.',
+            });
+        }
+
+        function init() {
+
+            if (flag == 1) {
+                _count = _count + 1;
+            }
+            console.log(_count);
+
+            if (_count == 1) {
+                $('#img').attr("src", "/static/img/Kerala live accident CCTV 2019 0" + _count + ".jpg");
+            }
+            else {
+                if (_count >= 10) {
+                    $('#img').attr("src", "/static/img/Kerala live accident CCTV 2019 " + _count + ".jpg");
+                } else if (_count < 10) {
+                    $('#img').attr("src", "/static/img/Kerala live accident CCTV 2019 0" + _count + ".jpg");
+                }
+            }
+
+            if (_count == 2) {
+                sweet();
+            }
+
+            id = setTimeout(init, 400);
+        }
+        function myfunction() {
+
+            if (_count != 1) {
+                console.log(_count + "myfunction()");
+                flag = 0;
+                wait(10000);
+            }
+
+        }
+
+    </script>
+
+    </head>
+
+    <style>
+        ul li {
+            list-style-type: none;
+        }
+    </style>
+
+    <body onLoad="init();">
+        <div class="container2" style="width:920px; border:1px solid black;">
+            <img id="img" src="" style="width: 100%; height: 100%; float: right;" class="relative"
+                onerror="myfunction()">
+            <div style="width:100% ; overflow-y: auto; height: 0px;">
+                <div style="width:100%; padding-left: 20px; position: absolute; ">
+                </div>
+                <ul style="top: -4  0px;">
+                </ul>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9">
+        import Swal from 'sweetalert2'
+    </script>
+    </html>
+</body>
+
+
+
 {% endblock extra-style %}
 
 {% block content %}
-    <div class="home-window">
-        <h2 class="title">Django - Python Web Programming</h2>
-        <h4 class="powered"><i class="fas fa-cog"></i> powered by django and bootstrap.</h4>
-    </div>
-
-    <hr style="margin: 10px 0;">
-
-    <div class="row text-center">
-        <div class="col-sm-6">
-            <h3>Todo App</h3>
-            <li>{{add_image}}</li>
-
-            <p>With Todo app, you can manage, prioritize, and complete the most important things
-                you need to do every day. I can focus on the most important things
-                and I can do my day more deliberately.
-                You can also share lists with colleagues, friends, and family.</p>
-        </div>
-        <div class="col-sm-6">
-            <h3>Blog App</h3>
-            <p>This application makes it possible to log daily events or write your own interests
-                such as hobbies, techniques, etc.
-                A typical blog combines text, digital images, and links to other blogs, web pages,
-                and other media related to its topic.</p>
+<section id="services">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">At Our Service</h2>
+                <hr class="primary">
+            </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-check-square wow bounceIn text-primary"></i>
+                    <h3>Object Detection</h3>
+                    <p class="text-muted">object detection</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-male wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <h3>Pose Estimation</h3>
+                    <p class="text-muted">pose estimation</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-exclamation-triangle wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                    <h3>Accident detection</h3>
+                    <p class="text-muted">accident detection</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-download wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                    <h3>Download</h3>
+                    <p class="text-muted">download</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
 
 {% block footer %}
@@ -153,33 +214,15 @@ footer ul li {
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <p>Copyright &copy; 2019 DjangoBook by shkim</p>
-            </div>
-            <div class="col-md-8">
-                <ul class="list-inline float-right">
-                    <li class="list-inline-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="준비중입니다">Introduction</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="준비중입니다">Help</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="준비중입니다">Policy</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="준비중입니다">Something</a>
-                    </li>
-                </ul>
+                <br>
+                <p>Copyright &copy; 2020. All Right Reserved.</p>
             </div>
         </div>
     </div>
 </footer>
+
 {% endblock footer %}
 
 {% block extra-script %}
-<script>
-$(function () {
-    $('[data-toggle=tooltip]').tooltip();
-});
-</script>
+
 {% endblock extra-script %}
